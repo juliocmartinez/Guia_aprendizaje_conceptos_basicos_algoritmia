@@ -1,31 +1,30 @@
 window.addEventListener('load', function () {
     /**
-     * 1. Un corredor de maratón (distancia 42,195 Km) ha recorrido la carrera en 2 horas 25 minutos.
-     Se desea un algoritmo que calcule el tiempo medio en minutos por kilómetro.
+     * 2. Realizar la conversión de una temperatura dada en grados Centígrados
+     *  a grados Fahrenheit (Fórmula: F = (9/5) C + 32). 
      */
 
     let boton = document.querySelector("#boton")
 
-    boton.addEventListener("click", () => {
 
-        let distancia, horas, minutos, horasToMinutos
-        do {
-            distancia = 42.195
-            horas = parseInt(prompt("Ingrese el numero de horas"))
-            minutos = parseInt(prompt("Ingrese los minutos"))
-            horasToMinutos = (horas * 60) + minutos;
+    boton.addEventListener('click', (temperatura) => {
+        temperatura = prompt("ingrese temperatura: ")
 
-            let tiempoMedio = distancia / horasToMinutos
-
-            if (isNaN(horas) || isNaN(minutos) || horas<=0 || minutos<=0) {
-                alert("Ingrese solo números")
-            } else {
-                console.log(`EL tiempo medio de la maraton corrida en ${horasToMinutos} minutos fue de ${tiempoMedio} km/min`);
-            }
+        if (temperatura > 0 && temperatura < Infinity) {
+            let formula = ((9 / 5) * temperatura + 32)
+            document.write(`<h1>Conversión de °C a °F</h1>
+            ${temperatura}°C equivalen a ${formula}°F`)
+            
+        }else{
+            this.document.write(`Digitos invalidos`)
         }
-        while (isNaN(horas) || isNaN(minutos))
+
 
     })
+
+
+
+
 
 
 })
