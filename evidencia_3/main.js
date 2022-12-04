@@ -3,28 +3,28 @@ window.addEventListener('load', function () {
      * anual 
      * ¿al término de cuántos años se doblará?  */
 
-    function dineroDuplicado() {
-        let capital,interesAnual
 
-        do {
-             capital = parseFloat(prompt("Capital de inversion"))
-             interesAnual = parseFloat(prompt("Interes anual"))
-        }
-        while (isNaN(capital) || capital == null || capital == "" || isNaN(interesAnual) || interesAnual == null || interesAnual == "")
+    
 
-        let capitalDuplicado = capital * 2
-        let dinero = (capital * interesAnual) / 100
-        let contadorYears = 0
+        let menores25 = []
+        let listaNum;
+        for (let index = 1; index < 6; index++) {
+            listaNum = parseInt(prompt(`Digite numero ${index}`))
+            while (isNaN(listaNum) || listaNum == null || listaNum == "") {
+                listaNum = parseInt(prompt(`Digite numero ${index}`))
 
-        while (capital < capitalDuplicado) {
-            capital += dinero
-            contadorYears++
+            }
+            listaNum <= 25 ? menores25.push(listaNum) : console.log("Descartado ", listaNum);
 
         }
-        document.write(`<h1>En ${contadorYears} años el capital  se duplicará a ${capital} Dolares <br> Tasa efectiva anual: ${interesAnual}%</h1>`)
-    }
+        document.write(`<h1>Numeros Menores que 25</h1><br><h2>${menores25}\n</h2>`)
 
-    dineroDuplicado()
+
+        console.log(menores25)
+
+
+
+
 
 
 
