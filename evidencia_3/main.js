@@ -1,28 +1,23 @@
 window.addEventListener('load', function () {
-    /*
-    Elaborar un algoritmo que permita ingresar 20 números y muestre todos
-    los números menores e iguales a
-
-    */
-
-
+    /*Hacer un programa que sume 5 precios de camisas (en dólares)
+     y que luego muestre el total de la venta en pesos. */
     
+   
 
-        let menores25 = []
-        let listaNum;
-        for (let index = 1; index < 6; index++) {
-            listaNum = parseInt(prompt(`Digite numero ${index}`))
-            while (isNaN(listaNum) || listaNum == null || listaNum == "") {
-                listaNum = parseInt(prompt(`Digite numero ${index}`))
-
-            }
-            listaNum <= 25 ? menores25.push(listaNum) : console.log("Descartado ", listaNum);
+    let sumaPrecios = 0;
+    let listPrecios;
+    let dolarToCop = 4890
+    for (let index = 1; index < 6; index++) {
+        listPrecios = parseInt(prompt(`Precio camisa ${index}`))
+        while (isNaN(listPrecios) || listPrecios == null || listPrecios == "") {
+            listPrecios = parseInt(prompt(`Precio camisa ${index}`))
 
         }
-        document.write(`<h1>Numeros Menores que 25</h1><br><h2>${menores25}\n</h2>`)
+        sumaPrecios += listPrecios
 
+    }
+    document.write(`<h2>El total de la venta es de: COP ${sumaPrecios * dolarToCop}</h2>`)
 
-        console.log(menores25)
 
 
 
