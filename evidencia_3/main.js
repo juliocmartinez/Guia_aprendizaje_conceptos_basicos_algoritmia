@@ -1,7 +1,9 @@
 window.addEventListener('load', function () {
-    /**4. Un capital C está situado a un tipo de interés R 
-     * anual 
-     * ¿al término de cuántos años se doblará?  */
+    /*
+    Elaborar un algoritmo que permita ingresar 20 números y muestre todos
+    los números menores e iguales a
+
+    */
 
 
     
