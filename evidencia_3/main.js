@@ -1,31 +1,55 @@
 window.addEventListener('load', function () {
-    /*Hacer un programa que sume 5 precios de camisas (en dólares)
-     y que luego muestre el total de la venta en pesos. */
-    
-   
+    /*Hacer un programa que registre el consumo realizado 
+    por los clientes de un restaurante, si el consumo de
 
-    let sumaPrecios = 0;
-    let listPrecios;
-    let dolarToCop = 4890
-    for (let index = 1; index < 6; index++) {
-        listPrecios = parseInt(prompt(`Precio camisa ${index}`))
-        while (isNaN(listPrecios) || listPrecios == null || listPrecios == "") {
-            listPrecios = parseInt(prompt(`Precio camisa ${index}`))
+cada cliente excede 50000 se hará un descuento del 20%. Se debe mostrar el pago de cada cliente y el total
+de todos los pagos. */
+
+    let numClientes = parseInt(prompt("Clientes para registrar"))
+    let arrayClientes = []
+    let container = document.querySelector("#container")
+    let ul = document.createElement("ul")
+
+
+    for (let i = 1; i <= numClientes; i++) {
+        let clienteName = (prompt("Nombre cliente " + i))
+        let clienteConsumo = parseFloat(prompt("Ingrese consumo cliente " + i))
+        while (isNaN(clienteConsumo) || clienteConsumo == null || clienteConsumo == "") {
+            alert("Valor incorrecto, intente nuevamente")
+            clienteConsumo = parseFloat(prompt("Ingrese consumo cliente " + i))
+        }
+
+        arrayClientes.push({ cliente: clienteName, consumoNeto: clienteConsumo })
+    }
+    arrayClientes.map((index) => {
+        // (index.consumo>=50000) ? console.log(index.consumo*=0.8) : console.log("No aplicó descuento");;
+        if (index.consumoNeto >= 50000) {
+            index.consumoDesc = index.consumoNeto * 0.2
+            index.consumoTotal = index.consumoNeto - index.consumoDesc
+
+            // console.log(index);
+        } else {
+            index.consumoDesc = 0
+            index.consumoTotal = index.consumoNeto
+            // console.log(index);
 
         }
-        sumaPrecios += listPrecios
+        let sumaTotal = 0
+        sumaTotal += index.consumoTotal
+        let li = document.createElement('li');
+        li.append(`Cliente: ${index.cliente} -- Consumo Neto: ${index.consumoNeto} -- Descuento: ${index.consumoDesc} -- Total a Pagar: ${index.consumoTotal}`)
+        ul.append(li)
 
-    }
-    document.write(`<h2>El total de la venta es de: COP ${sumaPrecios * dolarToCop}</h2>`)
+        container.append(ul)
 
+    })
 
-
-
-
-
-
-
-
+    arrayClientes.reduce((a, b) => {
+        let suma = a.consumoTotal + b.consumoTotal
+        let total = document.createElement('h2')
+        total.append("Total: COP ",suma)
+        container.append(total)
+    })
 
 
 })
