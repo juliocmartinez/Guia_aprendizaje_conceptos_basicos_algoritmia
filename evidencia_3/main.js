@@ -44,12 +44,14 @@ de todos los pagos. */
 
     })
 
-    arrayClientes.reduce((a, b) => {
-        let suma = a.consumoTotal + b.consumoTotal
-        let total = document.createElement('h2')
-        total.append("Total: COP ",suma)
-        container.append(total)
-    })
+    let total = arrayClientes.reduce((acumulador, actual) =>
+        acumulador + actual.consumoTotal, 0
+
+    )
+    let suma = document.createElement('h2')
+    suma.append("Total: COP ", total)
+    container.append(ul)
+    container.append(suma)
 
 
 })
